@@ -52,7 +52,7 @@ public class MyFrame09 extends JFrame {
 		btn1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				clickNum(btn1.getText());
+				clickNum(e);
 			}
 		});
 		btn1.setBounds(17, 67, 58, 26);
@@ -62,7 +62,7 @@ public class MyFrame09 extends JFrame {
 		btn2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				clickNum(String.valueOf(2));
+				clickNum(e);
 			}
 		});
 		btn2.setBounds(72, 67, 58, 26);
@@ -72,7 +72,7 @@ public class MyFrame09 extends JFrame {
 		btn3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				clickNum(String.valueOf(3));
+				clickNum(e);
 			}
 		});
 		btn3.setBounds(124, 67, 58, 26);
@@ -82,7 +82,7 @@ public class MyFrame09 extends JFrame {
 		btn4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				clickNum(String.valueOf(4));
+				clickNum(e);
 			}
 		});
 		btn4.setBounds(17, 105, 58, 26);
@@ -92,7 +92,7 @@ public class MyFrame09 extends JFrame {
 		btn5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				clickNum(String.valueOf(5));
+				clickNum(e);
 			}
 		});
 		btn5.setBounds(72, 105, 58, 26);
@@ -102,7 +102,7 @@ public class MyFrame09 extends JFrame {
 		btn6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				clickNum(String.valueOf(6));
+				clickNum(e);
 			}
 		});
 		btn6.setBounds(124, 105, 58, 26);
@@ -112,7 +112,7 @@ public class MyFrame09 extends JFrame {
 		btn7.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				clickNum(String.valueOf(7));
+				clickNum(e);
 			}
 		});
 		btn7.setBounds(17, 144, 58, 26);
@@ -122,7 +122,7 @@ public class MyFrame09 extends JFrame {
 		btn8.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				clickNum(String.valueOf(8));
+				clickNum(e);
 			}
 		});
 		btn8.setBounds(72, 143, 58, 26);
@@ -132,7 +132,7 @@ public class MyFrame09 extends JFrame {
 		btn9.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				clickNum(String.valueOf(9));
+				clickNum(e);
 			}
 		});
 		btn9.setBounds(124, 144, 58, 26);
@@ -153,7 +153,7 @@ public class MyFrame09 extends JFrame {
 		btn0.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				clickNum(String.valueOf(0));
+				clickNum(e);
 			}
 		});
 		btn0.setBounds(72, 178, 58, 26);
@@ -163,7 +163,7 @@ public class MyFrame09 extends JFrame {
 		btnStar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				clickNum("*");
+				clickNum(e);
 			}
 		});
 		btnStar.setBounds(17, 177, 58, 26);
@@ -173,15 +173,21 @@ public class MyFrame09 extends JFrame {
 		btnSharp.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				clickNum("#");
+				clickNum(e);
 			}
 		});
 		btnSharp.setBounds(124, 177, 58, 26);
 		contentPane.add(btnSharp);
 	}
 	
-	public void clickNum(String number){
-		tf.setText(tf.getText()+number);
+	public void clickNum(MouseEvent e){
+		JButton temp = (JButton)(e.getSource());
+		tf.setText(tf.getText()+ temp.getText());
 	}
 
 }
+
+
+
+
+
