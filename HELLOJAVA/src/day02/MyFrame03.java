@@ -16,10 +16,12 @@ import javax.swing.JTextField;
  * 숙제 : MyFrame02 만들고, Jlabel 넣고 (lbl) 숫자넣고 버튼 Jbtn(btn) 만들고, 클릭하면 라벨에 써있는 숫자가 계속 증가하게끔 구현하기. 
  */
 
-public class MyFrame02 extends JFrame {
+public class MyFrame03 extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField tf1;
+	private JTextField tf_a;
+	private JTextField tf_b;
+	private JTextField tf_3;
 
 	/**
 	 * Launch the application.
@@ -28,7 +30,7 @@ public class MyFrame02 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MyFrame02 frame = new MyFrame02();
+					MyFrame03 frame = new MyFrame03();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,35 +42,43 @@ public class MyFrame02 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MyFrame02() {
+	public MyFrame03() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-	
-		JLabel lbl = new JLabel("1");
-		lbl.setBounds(23, 29, 117, 80);
-		contentPane.add(lbl);
 		
-		JButton btn = new JButton("click to increase");
-		btn.setBounds(157, 29, 125, 89);
-		btn.addMouseListener(new MouseAdapter() {
+		tf_a = new JTextField();
+		tf_a.setBounds(21, 115, 72, 26);
+		contentPane.add(tf_a);
+		tf_a.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("+");
+		lblNewLabel.setBounds(105, 120, 61, 16);
+		contentPane.add(lblNewLabel);
+		
+		tf_b = new JTextField();
+		tf_b.setBounds(137, 115, 72, 26);
+		contentPane.add(tf_b);
+		tf_b.setColumns(10);
+		
+		JButton btnNewButton = new JButton("=");
+		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				int number = Integer.parseInt(lbl.getText());
-				lbl.setText(String.valueOf(number+1));
-				int number2 = Integer.parseInt(tf1.getText());
-				tf1.setText(String.valueOf(number2+1));
+				int numA = Integer.parseInt(tf_a.getText());
+				int numB = Integer.parseInt(tf_b.getText());
+				tf_3.setText(String.valueOf(numA+numB));
 			}
 		});
-		contentPane.add(btn);
+		btnNewButton.setBounds(221, 116, 55, 26);
+		contentPane.add(btnNewButton);
 		
-		tf1 = new JTextField();
-		tf1.setText("2");
-		tf1.setBounds(94, 56, 49, 26);
-		contentPane.add(tf1);
-		tf1.setColumns(10);
+		tf_3 = new JTextField();
+		tf_3.setBounds(288, 115, 93, 26);
+		contentPane.add(tf_3);
+		tf_3.setColumns(10);
 	}
 }
