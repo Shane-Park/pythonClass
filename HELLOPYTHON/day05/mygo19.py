@@ -10,7 +10,7 @@ from PyQt5 import uic, QtWidgets
 from PyQt5.Qt import QMainWindow, QApplication, QPushButton, QIcon, QSize
 
 
-form_class = uic.loadUiType("mygo.ui")[0]
+form_class = uic.loadUiType("mygo19.ui")[0]
 
 
 
@@ -18,25 +18,38 @@ class MyWindow(QMainWindow, form_class):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.size = 19
         self.arr2D = [
-            [0,0,0,0,0, 0,0,0,0,0],
-            [0,0,0,0,0, 0,0,0,0,0],
-            [0,0,0,0,0, 0,0,0,0,0],
-            [0,0,0,0,0, 0,0,0,0,0],
-            [0,0,0,0,0, 0,0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
             
-            [0,0,0,0,0, 0,0,0,0,0],
-            [0,0,0,0,0, 0,0,0,0,0],
-            [0,0,0,0,0, 0,0,0,0,0],
-            [0,0,0,0,0, 0,0,0,0,0],
-            [0,0,0,0,0, 0,0,0,0,0]
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0],
+            [0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0]
+            
+            
             ]
         self.arr2pb = []
         self.turn = True
         self.flag_playing = True
     
         iconSize = 40
-        self.size = 10
         for i in range(0,self.size):
             line = []
             for j in range(0,self.size):
@@ -127,8 +140,8 @@ class MyWindow(QMainWindow, form_class):
         else:
             self.turnBtn.setIcon(QIcon('1.png')) 
             
-        for i in range(0,10):
-            for j in range(0,10):
+        for i in range(0,self.size):
+            for j in range(0,self.size):
                 if(self.arr2D[i][j] == 0):
                     self.arr2pb[i][j].setIcon(QIcon('0.png'))         
                 if(self.arr2D[i][j] == 1):
@@ -146,7 +159,6 @@ class MyWindow(QMainWindow, form_class):
         
         if(self.arr2D[i][j] == 0):
             self.arr2D[i][j] = 2 if self.turn else 1
-            self.myrender()
             up = self.getUp(i,j,2 if self.turn else 1)
             down = self.getDown(i,j,2 if self.turn else 1)
             left = self.getLeft(i,j,2 if self.turn else 1)
@@ -159,8 +171,10 @@ class MyWindow(QMainWindow, form_class):
             if( up+down-1 == 5 or left+right-1 == 5 or leftUp+rightDown-1 == 5 or leftDown+rightUp-1 == 5):
                 self.flag_playing = False
                 QtWidgets.QMessageBox.about(self,"message","흑 승" if self.turn else "백 승")
-            
+                
             self.turn = not self.turn
+            self.myrender()
+            
     
     def reset(self):
         for i in range(self.size):
