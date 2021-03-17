@@ -2,8 +2,8 @@
 Created on 17 Mar 2021
 
 @author: shane
-숙제2 
-stock table에 데이터 넣기. date는 yyyymmddHHMM 총 12 자리
+
+이미 insert 했으니 이번에는 update로 변동시키기
 '''
 from datetime import datetime
 
@@ -19,7 +19,7 @@ soup = BeautifulSoup(txt, 'html.parser')
 
 db = pymysql.connect(host='localhost', user='root', db='python', password='python', charset='utf8')
 curs = db.cursor()
-
+count = 0
 for info in soup.select('.tbody'):
     name = info.dt.text
     price = int(info.dd.span.text.replace(",",""))
@@ -27,13 +27,16 @@ for info in soup.select('.tbody'):
     stockId = stockId[-6:len(stockId)]
     
     sql = '''
-    insert into stock
-    (s_code, s_name, s_price, in_date)
-    values('{0}','{1}',{2},{3} )
-    '''.format(stockId,name,price,datetime.now().strftime("%Y%m%d%H%M"))
+    update stock 
+    set s_price = {0}, in_date = {1}
+    where s_code = '{2}'
+    '''.format(price,datetime.now().strftime("%Y%m%d%H%M"),stockId )
+    
+    count += 1
+
     curs.execute(sql)
     
 
-print("등록 완료") 
+print("{0}개 column 업데이트 완료".format(count)) 
 db.commit()
 db.close()
