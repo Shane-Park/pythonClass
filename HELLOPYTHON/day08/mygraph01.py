@@ -1,16 +1,31 @@
 '''
 Created on 18 Mar 2021
 
-숙제 : 삼성, LG, SK 주식 3D 그래프 그리기
+LG화학 주가 2차원 그래프 내보내기
 
 @author: shane
 '''
-import numpy
+import re
+
+import pymysql
 import matplotlib.pyplot as plt
 
-test01 = numpy.linspace (0,10,10)
-test02 = numpy.random.randn(10) + test01 * 5 + test01 * 2
+db = pymysql.connect(host='localhost', user='root', db='python', password='python', charset='utf8')
+curs = db.cursor()
+sql = "select s_price from stock where s_name = 'LG화학' order by in_date desc";
 
+curs.execute(sql)
+rows = curs.fetchall()
 
-plt.plot(test01, test02)
+x = []
+price_arr = []
+for i in range(len(rows)):
+    price = int(re.findall('\d+',str(rows[i]))[0])
+    price_arr.append(price)
+    x.append(i)
+
+db.commit()
+db.close()
+
+plt.plot(x, price_arr)
 plt.show()
