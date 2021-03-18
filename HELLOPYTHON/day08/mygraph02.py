@@ -12,11 +12,12 @@ import matplotlib.pyplot as plt
 
 db = pymysql.connect(host='localhost', user='root', db='python', password='python', charset='utf8')
 curs = db.cursor()
+x = []
+
 sql = "select s_price from stock where s_name = 'LG화학' order by in_date desc";
 curs.execute(sql)
 rows = curs.fetchall()
 
-x = []
 price_lg = []
 for i in range(len(rows)):
     price = int(re.findall('\d+',str(rows[i]))[0])
