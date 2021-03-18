@@ -15,7 +15,7 @@ client_id = "OQIdSmfOapYv43N94rCU"
 client_secret = "1wnuSLskvs"
 encText = urllib.parse.quote("테슬라")
 #url = "https://openapi.naver.com/v1/search/blog?query=" + encText # json 결과
-url = "https://openapi.naver.com/v1/search/news.xml?query=" + encText # xml 결과
+url = "https://openapi.naver.com/v1/search/news.xml?display=100&sort=date&query=" + encText # xml 결과
 request = urllib.request.Request(url)
 request.add_header("X-Naver-Client-Id",client_id)
 request.add_header("X-Naver-Client-Secret",client_secret)

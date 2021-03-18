@@ -30,10 +30,9 @@ for info in soup.select('.tbody'):
     update stock 
     set s_price = {0}, in_date = {1}
     where s_code = '{2}'
-    '''.format(price,datetime.now().strftime("%Y%m%d%H%M"),stockId )
+    '''.format(price,datetime.now().strftime("%Y%m%d%H%M%S"),stockId )
     
     count += 1
-
     curs.execute(sql)
     
 
