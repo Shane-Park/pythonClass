@@ -3,9 +3,9 @@ Created on 17 Mar 2021
 
 @author: shane
 '''
-from datetime import datetime
-
-
-now = datetime.now().strftime("%Y%m%d%H%M")
-
-print("date and time =", now)    
+from mpl_toolkits import mplot3d
+import numpy as np
+import matplotlib.pyplot as plt
+fig = plt.figure()
+ax = plt.axes(projection='3d')
+plt.show()
