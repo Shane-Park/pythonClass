@@ -1,7 +1,6 @@
 '''
 Created on 19 Mar 2021
-각 주식별 가격 변동을 기록해 그래프 그리기
-일단 한개만 그려보기
+주식 모든 종목 출력하기
 @author: shane
 '''
 import pymongo
@@ -9,7 +8,6 @@ import matplotlib as mpl
 import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
 import numpy as np
-
 
 # 라벨 한글깨짐 방지를 위한 폰트 설정
 fm.get_fontconfig_fonts()
@@ -25,7 +23,14 @@ mycol = mydb["mystock02"]
 
 # stock 이름들 받아오기
 
-stock = ['GS건설']
+stock = []
+
+document = mycol.find_one()
+keys = document.keys()
+for key in keys:
+    if(key!='_id' and key!='in_date'):
+        stock.append(key)
+        
 
 # 정보를 받아온 횟수 totalNum에 기록해서 time 배열만들기
 results = mycol.find()

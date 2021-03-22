@@ -1,6 +1,6 @@
 '''
 Created on 22 Mar 2021
-count 활용
+특정 종목 가격들 불러오기
 @author: shane
 '''
 import pymongo
@@ -9,7 +9,9 @@ myclient = pymongo.MongoClient("mongodb://localhost:27017")
 mydb = myclient["python"]
 mycol = mydb["mystock02"]
 
-results = mycol.find({"GS건설"})
+stockName = '대우건설'
 
-for x in mycol.find({"GS건설"}):
-    print(x)
+print(mycol.find({},{'_id':0,stockName:1})[0][stockName])
+print()
+for x in mycol.find({},{'_id':0,stockName:1}):
+    print(x[stockName])
