@@ -14,8 +14,8 @@ import matplotlib.font_manager as fm
 import numpy as np
 
 # 총 출력할 주식수 , 총 출력할 변동 횟수 설정 : 렉 너무 심해서 비추천
-totalStocks = 1000
-totalChanges = 5
+totalStocks = 200
+totalChanges = 50
 
 # 라벨 한글깨짐 방지를 위한 폰트 설정
 fm.get_fontconfig_fonts()
