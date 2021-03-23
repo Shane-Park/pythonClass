@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h4>Hello ! welcome to templates!</h4>
+<form method="post" action="/stock">
+	<input type="text" name="stock" value="{{stock}}" placeholder="stock name">
+	<input type="submit" value="search">
+</form>
+<br/>
+Here's stock price about {{stock}}
+	<ol>
+		{% for price in list%}
+		<li>{{price}}</li>
+		{% endfor %}
+	</ol>
+</body>
+</html>
