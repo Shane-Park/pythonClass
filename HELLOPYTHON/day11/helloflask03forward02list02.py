@@ -20,8 +20,13 @@ def mylist():
     # DB에서 원하는 종목 가격 변화 불러오기
     stockName = '삼성전자';
     arr = []
-    for x in mycol.find({},{'_id':0,stockName:1}):
-        arr.append(x[stockName])
+    for x in mycol.find({},{'_id':0,'in_date':1,stockName:1}):
+        indate = x['in_date']
+        indate = f'''
+                {indate[0:4]}-{indate[4:6]}-{indate[6:8]}
+                {indate[8:10]}:{indate[10:12]}:{indate[12:]}
+                '''
+        arr.append(f'{indate} : {x[stockName]}원 ')
     
     return render_template("list02.html", name='shane', list=arr)
 
