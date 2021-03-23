@@ -3,7 +3,7 @@ Created on 17 Mar 2021
 
 @author: shane
 stock table에 데이터 넣기. date는 yyyymmddHHMM 총 12 자리
-MongoDB에 크롤링한 데이터 넣어보기
+Object 한개에 888개 모든 종목 다 넣기.
 '''
 from datetime import datetime
 import time
