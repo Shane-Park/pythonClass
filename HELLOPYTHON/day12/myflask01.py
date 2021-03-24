@@ -10,7 +10,7 @@ from day12.mydao import MyEmpDao
 
 app = Flask(__name__)
 
-@app.route('/emp')
+@app.route('/emp01')
 def emp():
     empList = MyEmpDao().getEmps();
     return render_template("emp01.html", empList=empList)
