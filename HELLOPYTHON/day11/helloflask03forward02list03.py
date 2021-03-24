@@ -18,7 +18,7 @@ def mylist():
     mycol = mydb["mystock02"]
     
     # DB에서 원하는 종목 가격 변화 불러오기
-    stockName = request.form.get('stock')
+    stockName = request.form.get('stock').strip()
     if(stockName == None):
         stockName = " "
     arr = []
