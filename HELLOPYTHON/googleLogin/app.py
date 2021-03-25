@@ -15,14 +15,15 @@ from oauthlib.oauth2 import WebApplicationClient
 import requests
 
 from googleLogin.db import init_db_command
+from googleLogin.idAndSecret import CLIENT_ID, CLIENT_SECRET
 from googleLogin.user import User
 
 
 # Third party libraries
 # Internal imports
 # Configuration
-GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", '844016043086-at1ghdr09757hpf7gag5j120hlch1n02.apps.googleusercontent.com')
-GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET", 'lAfJ0lqt3FWiv28kA4vXGVlJ')
+GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", CLIENT_ID)
+GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET", CLIENT_SECRET)
 GOOGLE_DISCOVERY_URL = (
     "https://accounts.google.com/.well-known/openid-configuration"
 )
