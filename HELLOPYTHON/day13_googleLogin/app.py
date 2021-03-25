@@ -14,9 +14,9 @@ from flask_login import (
 from oauthlib.oauth2 import WebApplicationClient
 import requests
 
-from googleLogin.db import init_db_command
-from googleLogin.idAndSecret import CLIENT_ID, CLIENT_SECRET
-from googleLogin.user import User
+from day13_googleLogin.db import init_db_command
+from day13_googleLogin.idAndSecret import CLIENT_ID, CLIENT_SECRET
+from day13_googleLogin.user import User
 
 
 # Third party libraries
