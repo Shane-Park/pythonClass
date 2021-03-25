@@ -21,14 +21,14 @@ from googleLogin.user import User
 # Third party libraries
 # Internal imports
 # Configuration
-GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", None)
-GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET", None)
+GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", '844016043086-at1ghdr09757hpf7gag5j120hlch1n02.apps.googleusercontent.com')
+GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET", 'lAfJ0lqt3FWiv28kA4vXGVlJ')
 GOOGLE_DISCOVERY_URL = (
     "https://accounts.google.com/.well-known/openid-configuration"
 )
 
 # Flask app setup
-app = Flask(__name__)
+app = Flask(__name__, static_url_path="", static_folder='static')
 app.secret_key = os.environ.get("SECRET_KEY") or os.urandom(24)
 
 # User session management setup
@@ -71,8 +71,7 @@ def index():
             )
         )
     else:
-        return '<a class="button" href="/login">클릭해서 구글 로그인하기</a>'
-
+        return '<a class="button" href="/login"><img src="button.png"></a>'
 
 @app.route("/login")
 def login():
