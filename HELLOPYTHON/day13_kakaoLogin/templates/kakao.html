@@ -23,7 +23,7 @@
 </script>
 
 <script type="text/javascript">
-Kakao.init('0cbf39500c394280666f509fd4bb7da6');
+Kakao.init('7508cb22d0fa7fa876821f092faefb06');
 console.log(Kakao.isInitialized());
 
   Kakao.Auth.createLoginButton({
@@ -37,11 +37,15 @@ console.log(Kakao.isInitialized());
           connected_at = result.connected_at
           kakao_account = result.kakao_account
           $('#result').append(kakao_account);
-          email = kakao_account.email
-          gender = kakao_account.gender
           resultdiv="<h2>로그인 성공 !!"
           resultdiv += '<h4>id: '+id+'<h4>'
           resultdiv += '<h4>connected_at: '+connected_at+'<h4>'
+          email ="";
+          gender = "";
+          if(typeof kakao_account != 'undefined'){
+        	  email = kakao_account.email;
+        	  gender = kakao_account.gender;
+          }
           resultdiv += '<h4>email: '+email+'<h4>'
           resultdiv += '<h4>gender: '+gender+'<h4>'
           $('#result').append(resultdiv);
