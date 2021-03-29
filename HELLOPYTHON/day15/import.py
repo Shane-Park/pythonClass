@@ -1,15 +1,15 @@
-import scipy
-import numpy
-import matplotlib
-import pandas
-import sklearn
+from cv2 import cv2
 import h5py
-import pydot
-#import tensorflow
 import keras
-import cv2
+import matplotlib
+import numpy
+import pandas
+import pydot
+import scipy
+import sklearn
 
 
+#import tensorflow
 print('scipy ' + scipy.__version__)
 print('numpy ' + numpy.__version__)
 print('matplotlib ' + matplotlib.__version__)
