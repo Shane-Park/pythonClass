@@ -64,10 +64,19 @@ predictions = model.predict(test_images)
 
 (train_images2, train_labels2), (test_images2, test_labels2) = mnist.load_data()
 
+arr = []
+
 for i in range(10000):
     if(np.argmax(predictions[i]) != np.argmax(test_labels[i])):
         cv2.imwrite("diff/"+str(i)+".png", test_images2[i])
+        arr.append(i)
 
+
+for i in arr:
+    predict = np.argmax(predictions[i])
+    correct = np.argmax(test_labels[i])
+    print(f'{i}번째 index 오답! 예상 : {predict}, 정답 : {correct}')
+    
 
 # 테스트 데이터로 정확도 측정하기
 test_loss, test_acc = model.evaluate(test_images, test_labels)
