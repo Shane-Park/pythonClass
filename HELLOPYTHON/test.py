@@ -1,8 +1,5 @@
-from astropy.io.ascii.cparser import np
+from keras.datasets import fashion_mnist
 
-a = 10
-print(type(a))
-a = np.dtype('int64').type(a)
-print(type(a))
+(train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()
 
-print(a != a )
+print(test_labels[1])
